@@ -1,24 +1,39 @@
 <?php
  
+ session_start();
+
  class userInput{
  
     public $userInput;
 
     function __construct($userInput){
+
          $this->userInput = $userInput;
+
     }
 
     function addInput(){
-        // echo $this->userInput;
-        echo '<select name="dropdown">
-                  <option value="'.$this->userInput.'">"'.$this->userInput.'"</option>
-              </select>';
+
+        if(!isset($_SESSION['option'])){
+            $_SESSION['option'] = [];
+        }
+
+        array_push($_SESSION['option'],$this->userInput);
+        
+        echo '<select name="dropdown">';
+                
+        foreach ($_SESSION['option'] as $value) {
+            echo '<option value="'.$value.'">"'.$value.'"</option>' ;
+        }
+        
+        echo '</select>';
               
     }
 
  }
 
- 
+
+
 if(isset($_POST['submit'])){
     $userInput = $_POST['userInput'];
     $input = new userInput($userInput);
@@ -45,8 +60,5 @@ if(isset($_POST['submit'])){
         <br>
         <button type="submit" name="submit">Submit</button>
     </form>
-
-    
-
 </body>
 </html>

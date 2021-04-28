@@ -1,94 +1,92 @@
 <?php
 
-class validation {
+class Validate{
 
-    public $name, $address, $phonenumber, $age;
-    // public $errorName = '', $errorAddress = '', $errorPhone = '',$errorAge = '';
+    public $name;
+    public $address;
+    public $phonenumber;
+    public $age;
 
-    function __constructor($name, $address, $phonenumber, $age){
-
-        $this->name = $name;
-        $this->address = $address;
-        $this->phonenumber = $phonenumber;
-        $this->age = $age;
+    function __construct($name,$address,$phonenumber,$age){
+       $this->name = $name;
+       $this->address = $address;
+       $this->phonenumber = $phonenumber;
+       $this->age = $age;
 
     }
-
+    
     function check(){
 
-        // if($_SERVER["REQUEST_METHOD"] == "POST"){
-
-            if(empty($this->name)){
-                return 'Your name is required!';
-                // return $this->errorName = 'Your name is required!';
-            } else {
-                return $this->errorName = 'Input Name is okay!';
-            }
-
-            if(empty($this->address)){
-                return $this->errorAddress = 'Address is required!';
-            } else {
-                return$this->errorAddress = 'Input address is okay!';
-            }
-
-            if(empty($this->phonenumber)){
-                return $this->errorPhone = 'Your phonenumber is required!';
-            } else {
-                return $this->errorPhone= 'Input phone number is okay!';
-            }
-            
-            if(empty($this->age)){
-                return $this->errorAge = 'Your age is required!';
-            } else {
-                return $this->errorAge= 'Input Age is okay!';
-            }
-
+        if (empty($this->name) && $this->name == null) {
+            echo("Your name is required!<br>");
+        } 
+        else {
+            echo $this->name;
+        }
+        
+        if (empty($this->address) && $this->address == null) {
+            echo("Your address is required!<br>");
+        } 
+        else {
+            echo $this->address;
+        }
+        
+        if (empty($this->phonenumber) && $this->phonenumber == null) {
+            echo("Your phonenumber is required!<br>");
+        } 
+        else {
+            echo $this->phonenumber;
         }
 
-    // }
+        if (empty($this->age) && $this->age == null) {
+            echo("Your age is required!");
+        } 
+        else {
+            echo $this->age;
+        }
+    }
 }
+
+
 if(isset($_POST['submit'])){
-    
-    $obj = new validation($_POST['name'], $_POST['address'], $_POST['phonenumber'], $_POST['age']);
-    echo $obj->check();
 
-    // $errorN = $obj->errorName;
-    // $errorA = $obj->errorAddress;
-    // $errorP = $obj->errorPhone;
-    // $errorAg = $obj->errorAge;
+    $userInput = $_POST['name'];
+    $address = $_POST['address'];
+    $pn = $_POST['phonenumber'];
+    $ages = $_POST['age'];
+
+    $input = new Validate($userInput, $address, $pn, $ages);
+    $input->check();
 }
 
+?>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
 
- ?>
+    <form action="" method="post">
+        <h4>Enter your name :</h4>
+        <input type="text" name="name">
+        <br>
+        <h4>Enter your address :</h4>
+        <input type="text" name="address">
+        <br>
+        <h4>Enter your phonenumber :</h4>
+        <input type="text" name="phonenumber">
+        <br>
+        <h4>Enter your age :</h4>
+        <input type="text" name="age">
+        <br>
+        <br>
+        <button type="submit" name="submit">Submit</button>
+    </form>
 
-  <!DOCTYPE html>
-  <html lang = "en-US" dir = "ltr">
-   <head>
-    <title>Home</title>
-    <meta charset = "UTF-8"/>
-   </head>
-   <body>
-
-   <form method = "POST" action="<?php echo $_SERVER["PHP_SELF"]?>">
-        <label>Name: </label>
-        <input type = "text" name = "name" placeholder = "Your name ...."/>
-        <!-- <p class = "error"><?php echo $errorN;?></p> -->
-
-        <label>Address: </label>
-        <input type = "text" name = "address" placeholder = "Your address ...."/>
-        <!-- <p class = "error"><?php echo $errorA;?></p> -->
-
-        <label>Phonenumber: </label>
-        <input type = "text" name = "phonenumber" placeholder = "Your phonenumber .... "/>
-        <!-- <p class = "error"><?php echo $errorP;?></p> -->
-
-        <label>Age: </label>
-        <input type = "text" name = "age" placeholder = "Your Age ...."/>
-        <!-- <p class = "error"><?php echo $errorAg;?></p> -->
-
-        <input type="button" name="submit" value="submit">
-   </form>
-
-  </body>
- </html>
+</body>
+</html>

@@ -12,6 +12,7 @@ class Date {
         
         // $interval = $sdate->diff($edate);
         // echo "Difference : " . $interval->y . " years, " . $interval->m." months, ".$interval->d." days ";
+        
         $date_diff = abs(strtotime($edate) - strtotime($sdate));
         $years = floor($date_diff / (365*60*60*24));
         $months = floor(($date_diff - $years * 365*60*60*24) / (30*60*60*24));

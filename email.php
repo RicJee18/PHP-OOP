@@ -39,7 +39,7 @@ if(isset($_POST['submit'])){
 
     <form action="" method="post">
         <h4>Enter your email :</h4>
-        <input type="email" name="email">
+        <input type="text" name="email">
         <br>
         <br>
         <button type="submit" name="submit">Submit</button>
