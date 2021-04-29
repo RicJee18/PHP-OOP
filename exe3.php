@@ -36,7 +36,6 @@ if(isset($_POST['submit'])){
     <title>Document</title>
 </head>
 <body>
-
     <form action="" method="post">
         <h4>Enter your email :</h4>
         <input type="text" name="email">

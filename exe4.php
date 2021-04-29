@@ -16,34 +16,18 @@ class Validate{
     }
     
     function check(){
-
-        if (empty($this->name) && $this->name == null) {
-            echo("Your name is required!<br>");
-        } 
-        else {
-            echo $this->name;
-        }
         
-        if (empty($this->address) && $this->address == null) {
-            echo("Your address is required!<br>");
-        } 
-        else {
-            echo $this->address;
+        if( empty($this->name) || empty($this->address) || empty($this->phonenumber)  || empty($this->age)){
+            echo "Please fill out forms!";
         }
-        
-        if (empty($this->phonenumber) && $this->phonenumber == null) {
-            echo("Your phonenumber is required!<br>");
-        } 
-        else {
-            echo $this->phonenumber;
+        else
+        {
+            echo "Name: ".$this->name."<br>";
+            echo "Address: ".$this->address."<br>";
+            echo "Phonenumber: ".$this->phonenumber."<br>";
+            echo "Age: ".$this->age;
         }
 
-        if (empty($this->age) && $this->age == null) {
-            echo("Your age is required!");
-        } 
-        else {
-            echo $this->age;
-        }
     }
 }
 
